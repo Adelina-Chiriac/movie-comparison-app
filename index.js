@@ -33,6 +33,9 @@ const resultsWrapper = document.querySelector(".results");
 const onInput = async (event) => {
     const movies = await fetchData(event.target.value);
 
+    // Clear out any previous fetched results from the inner HTML of the dropdown menu
+    resultsWrapper.innerHTML = "";
+
     // Add the is-active class so that the dropdown menu will open 
     dropdown.classList.add("is-active");
 
