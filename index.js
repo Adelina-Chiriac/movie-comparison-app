@@ -42,9 +42,12 @@ const onInput = async (event) => {
     for (let movie of movies) {
         console.log(movie);
         const option = document.createElement("a");
+
+        const imgSrc = movie.Poster === "N/A" ? "" : movie.Poster;
+
         option.classList.add("dropdown-item");
         option.innerHTML = `
-            <img src="${movie.Poster}" />
+            <img src="${imgSrc}" />
             ${movie.Title}
         `;
         // Append each option that we create with movie info to the results wrapper (the div with class of results )
