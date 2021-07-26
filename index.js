@@ -32,15 +32,20 @@ const resultsWrapper = document.querySelector(".results");
 
 const onInput = async (event) => {
     const movies = await fetchData(event.target.value);
+
+    // Add the is-active class so that the dropdown menu will open 
+    dropdown.classList.add("is-active");
+
     for (let movie of movies) {
         console.log(movie);
-        const div = document.createElement("div");
-        div.innerHTML = `
+        const option = document.createElement("a");
+        option.classList.add("dropdown-item");
+        option.innerHTML = `
             <img src="${movie.Poster}" />
-            <h1>${movie.Title}</h1>
+            ${movie.Title}
         `;
-        // Append each div that we create with movie info to the div with an ID of target, underneath the input element
-        document.querySelector("#target").appendChild(div);
+        // Append each option that we create with movie info to the results wrapper (the div with class of results )
+        resultsWrapper.appendChild(option);
     }
 };
 
