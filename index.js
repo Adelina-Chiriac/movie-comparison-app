@@ -33,6 +33,11 @@ const resultsWrapper = document.querySelector(".results");
 const onInput = async (event) => {
     const movies = await fetchData(event.target.value);
 
+    if (!movies.length) {
+        dropdown.classList.remove("is-active");
+        return;
+    }
+
     // Clear out any previous fetched results from the inner HTML of the dropdown menu
     resultsWrapper.innerHTML = "";
 
