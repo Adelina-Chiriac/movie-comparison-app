@@ -45,7 +45,6 @@ const onInput = async (event) => {
     dropdown.classList.add("is-active");
 
     for (let movie of movies) {
-        console.log(movie);
         const option = document.createElement("a");
 
         const imgSrc = movie.Poster === "N/A" ? "" : movie.Poster;
@@ -59,6 +58,9 @@ const onInput = async (event) => {
         option.addEventListener("click", () => {
             dropdown.classList.remove("is-active");
             input.value = movie.Title;
+
+            // Make a follow-up request for the movie the user clicked on
+            onMovieSelect(movie);
         });
 
         // Append each option that we create with movie info to the results wrapper (the div with class of results )
@@ -73,3 +75,13 @@ document.addEventListener("click", (event) => {
         dropdown.classList.remove("is-active");
     }
 });
+
+const onMovieSelect = async (movie) => {
+    const response = await axios.get("https://omdbapi.com/", {
+        params: {
+            apikey: "eeeb0f72",
+            i: movie.imdbID
+        }
+    });
+    console.log(response.data);
+};
