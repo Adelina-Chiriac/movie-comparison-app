@@ -1,6 +1,4 @@
-
-createAutoComplete({
-    root: document.querySelector(".autocomplete"),
+const autocompleteConfiguration = {
     renderOption (movie) {
         const imgSrc = movie.Poster === "N/A" ? "" : movie.Poster;
         return `
@@ -28,6 +26,12 @@ createAutoComplete({
     
         return response.data.Search;
     }
+};
+
+
+createAutoComplete({
+    root: document.querySelector(".autocomplete"),
+    
 });
 
 
