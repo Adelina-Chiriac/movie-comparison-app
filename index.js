@@ -19,7 +19,7 @@ createAutoComplete({
         const imgSrc = movie.Poster === "N/A" ? "" : movie.Poster;
         return `
             <img src="${imgSrc}" />
-            ${movie.Title}
+            ${movie.Title} (${movie.Year})
         `;
     }
 });
