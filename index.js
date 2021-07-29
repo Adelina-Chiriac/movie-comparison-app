@@ -28,12 +28,15 @@ const autocompleteConfiguration = {
     }
 };
 
-
 createAutoComplete({
-    root: document.querySelector(".autocomplete"),
-    
+    ...autocompleteConfiguration, 
+    root: document.querySelector("#left-autocomplete")
 });
 
+createAutoComplete({
+    ...autocompleteConfiguration, 
+    root: document.querySelector("#right-autocomplete")
+});
 
 const onMovieSelect = async (movie) => {
     const response = await axios.get("https://omdbapi.com/", {
