@@ -7,6 +7,8 @@ const autocompleteConfiguration = {
         `;
     },
     onOptionSelect (movie) {
+        // Hide the usage instructions 
+        document.querySelector(".tutorial").classList.add("is-hidden");
         onMovieSelect(movie);
     },
     inputValue (movie) {
