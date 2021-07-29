@@ -1,5 +1,5 @@
 
-const createAutoComplete = ({ root, renderOption }) => {
+const createAutoComplete = ({ root, renderOption, onOptionSelect }) => {
     
 root.innerHTML = `
     <label><b>Search For A Movie!</b></label>
@@ -42,7 +42,7 @@ const onInput = async (event) => {
             input.value = movie.Title;
 
             // Make a follow-up request for the movie the user clicked on
-            onMovieSelect(movie);
+            onOptionSelect(movie);
         });
 
         // Append each option that we create with movie info to the results wrapper (the div with class of results )
