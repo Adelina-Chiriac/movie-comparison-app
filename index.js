@@ -6,11 +6,6 @@ const autocompleteConfiguration = {
             ${movie.Title} (${movie.Year})
         `;
     },
-    onOptionSelect (movie) {
-        // Hide the usage instructions 
-        document.querySelector(".tutorial").classList.add("is-hidden");
-        onMovieSelect(movie);
-    },
     inputValue (movie) {
         return movie.Title;
     },
@@ -32,15 +27,25 @@ const autocompleteConfiguration = {
 
 createAutoComplete({
     ...autocompleteConfiguration, 
-    root: document.querySelector("#left-autocomplete")
+    root: document.querySelector("#left-autocomplete"), 
+    onOptionSelect (movie) {
+        // Hide the usage instructions 
+        document.querySelector(".tutorial").classList.add("is-hidden");
+        onMovieSelect(movie, document.querySelector("#left-summary"));
+    }
 });
 
 createAutoComplete({
     ...autocompleteConfiguration, 
-    root: document.querySelector("#right-autocomplete")
+    root: document.querySelector("#right-autocomplete"), 
+    onOptionSelect (movie) {
+        // Hide the usage instructions 
+        document.querySelector(".tutorial").classList.add("is-hidden");
+        onMovieSelect(movie, document.querySelector("#right-summary"));
+    }
 });
 
-const onMovieSelect = async (movie) => {
+const onMovieSelect = async (movie, summaryLocation) => {
     const response = await axios.get("https://omdbapi.com/", {
         params: {
             apikey: "eeeb0f72",
@@ -48,8 +53,8 @@ const onMovieSelect = async (movie) => {
         }
     });
 
-    // Append to the DOM the HTML we created with the movieTemplate helper function
-    document.querySelector("#summary").innerHTML = movieTemplate(response.data);
+    // Append to the DOM the HTML we created with the movieTemplate helper function (on its respective side of the screen)
+    summaryLocation.innerHTML = movieTemplate(response.data);
 };
 
 const movieTemplate = (movieDetails) => {
