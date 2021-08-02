@@ -80,8 +80,9 @@ const movieTemplate = (movieDetails) => {
     const boxOffice = parseInt(movieDetails.BoxOffice.replace("$", "").replace(/,/g, ""));
     const metaScore = parseInt(movieDetails.Metascore);
     const imdbRating = parseFloat(movieDetails.imdbRating);
+    const imdbVotes = parseInt(movieDetails.imdbVotes.replace(/,/g, ""));
 
-    console.log(boxOffice, metaScore, imdbRating);
+    console.log(boxOffice, metaScore, imdbRating, imdbVotes);
 
     return `
         <article class="media">
