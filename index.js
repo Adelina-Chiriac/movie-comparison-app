@@ -78,10 +78,19 @@ const runComparison = () => {
     leftSideStats.forEach((leftStat, index) => {
         const rightStat = rightSideStats[index];
         
-        const leftSideValue = leftStat.dataset.value;
-        const rightSideValue = rightStat.dataset.value;
+        const leftSideValue = parseInt(leftStat.dataset.value);
+        const rightSideValue = parseInt(rightStat.dataset.value);
 
-        console.log(leftSideValue, rightSideValue);
+        // If the right side is greater, remove the green colour & add yellow colour to the left side
+        if (rightSideValue > leftSideValue) {
+            leftStat.classList.remove("is-primary");
+            leftStat.classList.add("is-warning");
+        }
+        // and viceversa
+        else {
+            rightStat.classList.remove("is-primary");
+            rightStat.classList.add("is-warning");
+        }
     });
 };
 
