@@ -77,7 +77,11 @@ const runComparison = () => {
 
     leftSideStats.forEach((leftStat, index) => {
         const rightStat = rightSideStats[index];
-        console.log(leftStat, rightStat);
+        
+        const leftSideValue = leftStat.dataset.value;
+        const rightSideValue = rightStat.dataset.value;
+
+        console.log(leftSideValue, rightSideValue);
     });
 };
 
