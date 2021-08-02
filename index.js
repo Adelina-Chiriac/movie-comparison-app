@@ -81,8 +81,17 @@ const movieTemplate = (movieDetails) => {
     const metaScore = parseInt(movieDetails.Metascore);
     const imdbRating = parseFloat(movieDetails.imdbRating);
     const imdbVotes = parseInt(movieDetails.imdbVotes.replace(/,/g, ""));
+    const awards = movieDetails.Awards.split(" ").reduce((previous, word) => {
+        // Check if the word is an integer
+        const value = parseInt(word);
 
-    console.log(boxOffice, metaScore, imdbRating, imdbVotes);
+        if (isNaN(value)) {
+            return previous;
+        }
+        else {
+            return previous + value;
+        }
+    }, 0);
 
     return `
         <article class="media">
