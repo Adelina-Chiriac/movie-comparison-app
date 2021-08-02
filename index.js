@@ -72,7 +72,13 @@ const onMovieSelect = async (movie, summaryElement, side) => {
 };
 
 const runComparison = () => {
-    console.log("Time for the comparison!");
+    const leftSideStats = document.querySelectorAll("#left-summary .notification");
+    const rightSideStats = document.querySelectorAll("#right-summary .notification");
+
+    leftSideStats.forEach((leftStat, index) => {
+        const rightStat = rightSideStats[index];
+        console.log(leftStat, rightStat);
+    });
 };
 
 const movieTemplate = (movieDetails) => {
